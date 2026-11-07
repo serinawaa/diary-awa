@@ -210,7 +210,12 @@ let ini=R?'dreamy':'shift';try{const s=localStorage.getItem('diaryAwaMood');if(l
 // Cuaca batin: berganti tanpa pola
 (()=>{if(R)return;const L=[['☀️','bright & buzzing'],['⛈️','loud inside'],['🌫️','static'],['🌙','soft & quiet'],['🌪️','too fast'],['🌧️','heavy'],['✨','golden hour'],['🌊','tidal']],i=document.getElementById('wxIcon'),t=document.getElementById('wxTxt');const go=()=>{const x=L[Math.random()*L.length|0];i.textContent=x[0];t.textContent=x[1];setTimeout(go,1100+Math.random()*2200)};setTimeout(go,1500)})();
 // Pemutar lagu. Isi SONG di bawah: src = file mp3 di folder yang sama, atau youtube = ID video.
-(()=>{const SONG={title:'Moonlit lullaby',artist:'placeholder — ganti SONG di script',src:'',youtube:''};
+(()=>{const SONG = {
+  title: 'Caramelldansen (Speed Up)',
+  artist: 'Caramell',
+  src: 'https://assets.mixkit.co/active_storage/sfx/2869/2869-84.wav',
+  youtube: 'https://www.youtube.com/watch?v=A67GrHC_FAY'
+};
 const $=id=>document.getElementById(id),btn=$('playBtn'),seek=$('plSeek'),vol=$('plVol'),box=$('ytBox');let au,ctx,gen,on=false;
 $('plTitle').textContent=SONG.title;$('plArtist').textContent=SONG.artist;
 if(SONG.src){au=new Audio(SONG.src);au.loop=true;au.volume=+vol.value;au.addEventListener('timeupdate',()=>{if(au.duration)seek.value=au.currentTime/au.duration*100});seek.oninput=()=>{if(au.duration)au.currentTime=seek.value/100*au.duration}}else seek.style.display='none';
