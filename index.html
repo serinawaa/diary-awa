@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#efe3ff">
+<meta name="description" content="Diary Awa — a little space for thoughts, knowledge, and everything in between.">
+<title>Diary Awa — A little space to grow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+@property --s1{syntax:'<color>';inherits:true;initial-value:#efe3ff}
+@property --s2{syntax:'<color>';inherits:true;initial-value:#ffe3ef}
+@property --s3{syntax:'<color>';inherits:true;initial-value:#d9f0ff}
+@property --sea1{syntax:'<color>';inherits:true;initial-value:#bfe8f5}
+@property --sea2{syntax:'<color>';inherits:true;initial-value:#bfeedd}
+:root{--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--mw:clamp(110px,18vw,220px)}
+body,body[data-mood=dreamy]{--s1:#efe3ff;--s2:#ffe3ef;--s3:#d9f0ff;--glow:#fff3cf;--m1:#fffaf0;--m2:#f6e6c4;--m3:#e9d3f0;--sea1:#bfe8f5;--sea2:#bfeedd;--acc:#f4b6d2;--acc2:#a8628f;--gold:#b08a4e;--champ:#e9cf9a;--ink:#4a3a5e;--muted:#766688;--glass:rgba(255,255,255,.62);--line:rgba(176,138,160,.28)}
+body[data-mood=happy]{--s1:#fff3d6;--s2:#ffe1ee;--s3:#d8f7e8;--glow:#fffbd6;--m1:#fffbe6;--m2:#f7e3a8;--m3:#f9cfd8;--sea1:#c4f1df;--sea2:#9fe3cf;--acc:#f7d89a;--acc2:#a0703f;--gold:#a8814e}
+body[data-mood=sad]{--s1:#d7e3f7;--s2:#c4d4ee;--s3:#dcd6f2;--glow:#eaf3ff;--m1:#f4f9ff;--m2:#cfe0f5;--m3:#a9bfe3;--sea1:#a9c6e6;--sea2:#86a9d4;--acc:#a8c8f0;--acc2:#4f6fa3;--gold:#6d84ad;--champ:#c9d9f0;--ink:#2f3f5f;--muted:#566789;--glass:rgba(240,246,255,.6);--line:rgba(95,125,175,.3)}
+body[data-mood=angry]{--s1:#ffe0c2;--s2:#ffc3b5;--s3:#f3a9c0;--glow:#ffd79a;--m1:#fff0c8;--m2:#ffb98a;--m3:#ef8a78;--sea1:#ffc6a2;--sea2:#f0968f;--acc:#ffb38a;--acc2:#a8453a;--gold:#a8643a;--champ:#ffd9a0;--ink:#5a3340;--muted:#7d5560;--line:rgba(190,110,100,.32)}
+body[data-mood=calm]{--s1:#e6dcff;--s2:#d6e4ff;--s3:#dcf5ee;--glow:#f3ecff;--m1:#fff;--m2:#e9ddff;--m3:#b9ace8;--sea1:#cfc8f3;--sea2:#aebfe9;--acc:#cdbdf2;--acc2:#7a63b0;--gold:#8a76b0}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--s1);color:var(--ink);font-family:var(--sans);line-height:1.7;overflow-x:hidden;transition:--s1 1.2s,--s2 1.2s,--s3 1.2s,--sea1 1.2s,--sea2 1.2s,color .8s}
+a{color:inherit;text-decoration:none}button{font:inherit}
+.sky{position:fixed;inset:0;z-index:-5;overflow:hidden;background:radial-gradient(ellipse at 80% 10%,var(--glow),transparent 32%),radial-gradient(ellipse at 10% 40%,#ffffff88,transparent 40%),linear-gradient(160deg,var(--s1),var(--s2) 52%,var(--s3))}
+.sky i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;animation:drift 26s ease-in-out infinite alternate}
+.sky i:nth-child(1){width:46vw;height:46vw;left:-10vw;top:12vh;background:#d9c8ff}
+.sky i:nth-child(2){width:40vw;height:40vw;left:38vw;top:38vh;background:#c4f0e2;animation-duration:32s}
+.sky i:nth-child(3){width:34vw;height:34vw;right:-8vw;top:50vh;background:#ffc9e0;animation-duration:22s}
+@keyframes drift{to{transform:translate(8vw,-6vh) scale(1.15)}}
+#stars{position:fixed;inset:0;z-index:-4;pointer-events:none}
+#moodFx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.moon{position:fixed;right:8%;top:100px;width:var(--mw);aspect-ratio:1;border-radius:50%;z-index:-3;pointer-events:none;background:radial-gradient(circle at 36% 32%,var(--m1) 0,var(--m2) 55%,var(--m3) 100%);box-shadow:0 0 30px 6px #fff8,0 0 90px 25px var(--glow),0 0 180px 60px #fff6;animation:moonGlow 7s ease-in-out infinite alternate;transition:background 1s}
+.moon:before{content:"";position:absolute;inset:-55%;border-radius:50%;background:radial-gradient(circle,#fff9 0,var(--glow) 28%,transparent 62%);opacity:.55;z-index:-1}
+.moon:after{content:"";position:absolute;width:24%;height:18%;left:24%;top:38%;border-radius:50%;background:#c9a9c633;filter:blur(4px);box-shadow:34px 30px 0 -2px #c9a9c622}
+@keyframes moonGlow{to{filter:brightness(1.06) saturate(1.1);transform:scale(1.03)}}
+.sea{position:fixed;bottom:0;left:0;width:100%;height:24vh;min-height:140px;z-index:-2;overflow:hidden;background:linear-gradient(180deg,color-mix(in srgb,var(--sea1) 70%,transparent),var(--sea1) 40%,var(--sea2))}
+.sea:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,var(--champ),#fff,var(--champ),transparent);box-shadow:0 0 20px 3px var(--champ)}
+.sea:after{content:"";position:absolute;top:0;right:calc(8% + var(--mw)/2 - 45px);width:90px;height:100%;background:linear-gradient(180deg,#fffc,transparent);filter:blur(10px);animation:shimmer 4s ease-in-out infinite alternate}
+@keyframes shimmer{to{opacity:.45;transform:scaleX(.7)}}
+.wave{position:absolute;left:-50%;width:200%;height:100%;background:radial-gradient(ellipse at 50% 0,transparent 0 55%,#fff 56% 57%,transparent 58%) 0 0/50% 100% repeat-x;opacity:.35}
+.wave.one{top:6%;animation:wave 22s linear infinite}.wave.two{top:20%;opacity:.22;animation:wave 15s linear infinite reverse}.wave.three{top:34%;opacity:.15;animation:wave 28s linear infinite}
+@keyframes wave{to{transform:translateX(25%)}}
+.wrap{width:min(1120px,calc(100% - 44px));margin:auto;position:relative;z-index:1}
+.nav-wrap{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--s1) 55%,#fff7);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font:600 1.5rem var(--serif)}.brand span{color:var(--acc2)}
+.nav-links{display:flex;gap:25px;font-size:.87rem;color:var(--muted)}.nav-links a:hover{color:var(--acc2)}
+.menu-btn{display:none;border:1px solid var(--line);background:#fff6;color:var(--ink);padding:7px 12px;border-radius:20px}
+.hero{min-height:570px;display:flex;align-items:center;padding:90px 0 110px}.hero-copy{max-width:680px}
+.eyebrow,.kicker,.tag{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.hero h1{font:600 clamp(3rem,7.4vw,6rem)/1.05 var(--serif);letter-spacing:-.04em;margin:18px 0 20px}
+.hero h1 em{background:linear-gradient(100deg,var(--acc2),#8aa7d8,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:500}
+.hero p{max-width:530px;color:var(--muted);font-size:1.05rem;margin:0 0 30px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;padding:11px 22px;border-radius:30px;font-size:.88rem;font-weight:700;border:1px solid var(--line);background:#fff5;transition:.2s}
+.btn.primary,.filter.active{background:linear-gradient(135deg,var(--acc),var(--champ));color:#4a3350;border-color:transparent;box-shadow:0 6px 22px color-mix(in srgb,var(--acc) 60%,transparent)}
+.btn:hover{transform:translateY(-2px)}
+.scroll-note{margin-top:50px;color:var(--muted);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+.section{padding:70px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px}
+.section h2{font:600 clamp(2rem,4vw,3.1rem)/1.15 var(--serif);margin:8px 0 0}.section-intro{max-width:480px;color:var(--muted);font-size:.93rem;margin:0}
+.glass{background:var(--glass);border:1px solid #fff9;outline:1px solid var(--line);outline-offset:-2px;border-radius:24px;backdrop-filter:blur(14px);box-shadow:0 12px 40px #b08ac52a,inset 0 1px 0 #fffc}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}.about-card{padding:32px}.about-card p{color:var(--muted);margin:12px 0}
+.quote-card{padding:30px;display:flex;flex-direction:column;justify-content:space-between;min-height:250px;background:linear-gradient(145deg,#ffffffaa,color-mix(in srgb,var(--acc) 35%,#fff7))}
+.quote-card blockquote{font:italic 1.5rem/1.5 var(--serif);margin:0}.quote-card small{color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
+.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.category{padding:22px;min-height:185px;transition:.25s;display:flex;flex-direction:column;justify-content:space-between}
+.category:hover,.content-card:hover{transform:translateY(-6px);box-shadow:0 18px 44px color-mix(in srgb,var(--acc) 55%,transparent),0 0 24px var(--glow)}
+.symbol{font-size:1.65rem;color:var(--acc2)}.category h3{font:600 1.3rem var(--serif);margin:12px 0 3px}.category p{font-size:.82rem;color:var(--muted);margin:0}.arrow{color:var(--gold);font-size:1.2rem;align-self:flex-end}
+.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.content-card{overflow:hidden;transition:.25s;display:flex;flex-direction:column;min-height:280px}
+.card-top{height:120px;padding:18px;display:flex;align-items:flex-end;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--acc),var(--s3) 60%,var(--sea2))}
+.card-top:after{content:"";position:absolute;width:150px;height:150px;border:1px solid #fff8;border-radius:50%;right:-30px;top:-70px;box-shadow:0 0 0 18px #ffffff22,0 0 0 38px #ffffff14}
+.card-body{padding:19px 20px 21px;display:flex;flex-direction:column;flex:1}.card-body h3{font:600 1.25rem/1.3 var(--serif);margin:7px 0}.card-body p{font-size:.85rem;color:var(--muted);margin:0 0 18px}
+.card-foot{margin-top:auto;display:flex;justify-content:space-between;color:var(--muted);font-size:.75rem}.text-link{color:var(--acc2);font-weight:700}
+.library-tools{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}
+.search{flex:1;min-width:200px;border:1px solid var(--line);border-radius:24px;background:#ffffffaa;color:var(--ink);padding:11px 16px;outline:none}.search:focus{border-color:var(--acc2)}
+.filter{border:1px solid var(--line);border-radius:24px;background:#fff6;color:var(--muted);padding:9px 15px;cursor:pointer}
+.empty{display:none;color:var(--muted);padding:25px;text-align:center}
+.about-bottom{display:grid;grid-template-columns:1fr 1fr;gap:18px}.note{padding:25px}.note h3{font:600 1.3rem var(--serif);margin:0 0 8px}.note p{color:var(--muted);font-size:.88rem;margin:0}
+.footer{padding:50px 0 120px;border-top:1px solid var(--line);margin-top:65px;color:var(--muted);font-size:.82rem}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer strong{font:600 1.25rem var(--serif);color:var(--ink)}.backtop{color:var(--acc2)}
+.mood-dock{position:fixed;right:20px;bottom:20px;z-index:30;width:min(320px,calc(100vw - 28px))}
+.mood-toggle{width:100%;border:1px solid #fffb;background:#ffffffcc;color:var(--ink);border-radius:999px;padding:11px 16px;box-shadow:0 8px 30px color-mix(in srgb,var(--acc) 60%,transparent);display:flex;justify-content:space-between;gap:8px;cursor:pointer;font-weight:700;backdrop-filter:blur(12px)}
+.mood-panel{display:none;margin-top:9px;padding:14px;border:1px solid #fffb;border-radius:22px;background:#ffffffe6;box-shadow:0 14px 40px #a07ac044;backdrop-filter:blur(15px)}
+.mood-panel.open{display:block;animation:panelIn .25s ease-out}@keyframes panelIn{from{opacity:0;transform:translateY(8px)}}
+.mood-panel p{margin:0 0 10px;color:var(--muted);font-size:.8rem}.mood-options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mood-choice{border:1px solid var(--line);border-radius:14px;background:#fff;padding:9px 5px;color:var(--ink);cursor:pointer;font-size:.78rem;font-weight:700;transition:.2s}.mood-choice span{display:block;font-size:1.35rem}
+.mood-choice:hover{transform:translateY(-2px)}.mood-choice[aria-pressed=true]{border:2px solid var(--acc2);background:color-mix(in srgb,var(--acc) 30%,#fff);box-shadow:0 0 14px var(--acc)}
+.mood-hint{font-size:.7rem!important;margin:10px 2px 0!important}
+@media(max-width:800px){.category-grid,.content-grid{grid-template-columns:repeat(2,1fr)}.about-grid{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.moon{right:-15px;top:125px;opacity:.6}}
+@media(max-width:580px){.wrap{width:calc(100% - 32px)}nav{height:66px}.menu-btn{display:block}.nav-links{display:none;position:absolute;top:66px;left:0;right:0;padding:18px 22px;background:#fffffff2;flex-direction:column;gap:15px;border-bottom:1px solid var(--line)}.nav-links.open{display:flex}.hero{min-height:500px;padding:70px 0 60px}.hero h1{font-size:clamp(2.7rem,14vw,4.6rem)}.section{padding:50px 0}.category-grid,.content-grid{gap:10px}.category{padding:16px;min-height:165px}.card-top{height:90px}.card-body{padding:15px}.card-body p,.category p{font-size:.78rem}.about-bottom{grid-template-columns:1fr}.mood-dock{right:12px;bottom:12px}}
+.moon .crack{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.crack path{fill:none;stroke:#d4a64a;stroke-width:.9;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 2px #f7d98a) drop-shadow(0 0 6px #f0c96e);animation:glint 5s ease-in-out infinite alternate}
+@keyframes glint{from{opacity:.55}to{opacity:1}}
+.wx{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:8px 16px;border-radius:30px;font-size:.78rem;color:var(--muted);background:#ffffff66;border:1px solid var(--line);backdrop-filter:blur(8px)}
+.wx b{font-size:1.15rem;font-weight:400}.wx em{font-style:normal;color:var(--acc2);font-weight:700}
+.about-card p em{color:var(--acc2)}
+.pulse{width:100%;height:46px;margin:26px 0 8px;overflow:visible;display:block}
+.pulse path{fill:none;stroke:var(--acc2);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;opacity:.55;stroke-dasharray:1000;stroke-dashoffset:1000;animation:ecg 7s linear infinite}
+@keyframes ecg{to{stroke-dashoffset:0}}
+.glyphs{display:flex;gap:14px;align-items:center;color:var(--gold);font-size:1.2rem}
+.glyphs small{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-left:6px}
+.player{position:fixed;left:20px;bottom:20px;z-index:30;display:flex;align-items:center;gap:10px;padding:9px 14px 9px 9px;width:min(300px,calc(100vw - 40px))}
+#playBtn{width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;color:#4a3350;background:linear-gradient(135deg,var(--acc),var(--champ));box-shadow:0 0 16px var(--acc);font-size:.8rem;flex:none}
+.pl-info{min-width:0;flex:1;display:flex;flex-direction:column;line-height:1.25}
+.pl-info strong{font:600 .85rem var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pl-info small{color:var(--muted);font-size:.7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.player input[type=range]{accent-color:var(--acc2);width:100%;height:14px;margin:2px 0 0}#plVol{width:54px;flex:none}
+.pl-yt{display:none;position:fixed;left:20px;bottom:84px;z-index:30;width:min(320px,calc(100vw - 40px));aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px #0003}.pl-yt.on{display:block}.pl-yt iframe{width:100%;height:100%;border:0}
+@media(max-width:580px){.player{left:12px;bottom:70px;width:calc(100vw - 24px)}.pl-yt{left:12px;bottom:134px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body data-mood="dreamy">
+<div class="sky"><i></i><i></i><i></i></div><canvas id="stars" aria-hidden="true"></canvas><canvas id="moodFx" aria-hidden="true"></canvas><div class="moon" aria-hidden="true"><svg class="crack" viewBox="0 0 100 100"><path d="M64 3 L57 17 L66 29 L52 43 L61 57 L47 70 L52 83 L44 98 M66 29 L80 34 M52 43 L38 40 M61 57 L75 64"/></svg></div>
+<div class="sea" aria-hidden="true"><div class="wave one"></div><div class="wave two"></div><div class="wave three"></div></div>
+<header class="nav-wrap"><nav class="wrap" aria-label="Navigasi utama">
+<a class="brand" href="#home">diary <span>awa.</span></a>
+<button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu ☰</button>
+<div class="nav-links" id="navLinks"><a href="#home">Home</a><a href="#about">About</a><a href="#explore">Explore</a><a href="#latest">Latest</a><a href="#library">Library</a></div>
+</nav></header>
+<aside class="mood-dock" aria-label="Pengaturan suasana website"><button class="mood-toggle" id="moodToggle" aria-expanded="false" aria-controls="moodPanel"><span>🦋 Change the atmosphere</span><span id="moodCurrent">Dreamy</span></button><div class="mood-panel" id="moodPanel"><p>How are you feeling today? Pick a little atmosphere.</p><div class="mood-options"><button class="mood-choice" data-mood="happy" aria-pressed="false"><span>☀️</span>Happy</button><button class="mood-choice" data-mood="sad" aria-pressed="false"><span>🌧️</span>Rainy</button><button class="mood-choice" data-mood="angry" aria-pressed="false"><span>🔥</span>Fiery</button><button class="mood-choice" data-mood="calm" aria-pressed="false"><span>🌙</span>Calm</button><button class="mood-choice" data-mood="dreamy" aria-pressed="false"><span>🦋</span>Dreamy</button><button class="mood-choice" data-mood="shift" aria-pressed="true"><span>∿</span>Shifting</button></div><p class="mood-hint">Pilih “Shifting” kalau mau lihat suasana yang berganti sendiri, tanpa aba-aba. Pilihanmu kesimpen di browser ini. ♡</p></div></aside>
+<aside class="glass player" id="player" aria-label="Pemutar lagu"><button id="playBtn" aria-label="Putar lagu">▶</button><div class="pl-info"><strong id="plTitle"></strong><small id="plArtist"></small><input id="plSeek" type="range" min="0" max="100" value="0" aria-label="Posisi lagu"></div><input id="plVol" type="range" min="0" max="1" step=".05" value=".7" aria-label="Volume"></aside>
+<div class="pl-yt" id="ytBox"></div>
+<main>
+<section class="hero wrap" id="home"><div class="hero-copy">
+<div class="eyebrow">Personal journal · Learning space · Creative archive</div>
+<h1>A little space<br>to <em>feel, learn,</em><br>and grow.</h1>
+<p>Selamat datang di Diary Awa — pojok kecil di internet buat nyimpen pikiran, berbagi ilmu, dan hal-hal kecil yang pengin kuingat.</p>
+<div class="actions"><a class="btn primary" href="#explore">Explore the space ↗</a><a class="btn" href="#about">Get to know this place</a></div>
+<div class="wx" aria-hidden="true"><b id="wxIcon">✨</b><span>inner weather: <em id="wxTxt">golden hour</em> · forecast unpredictable</span></div>
+<div class="scroll-note">↓ &nbsp; take your time, stay a little</div>
+</div></section>
+<section class="section wrap" id="about"><div class="section-head"><div><div class="kicker">A note from the owner</div><h2>What is Diary Awa?</h2></div><p class="section-intro">Nggak semua hal harus masuk satu kategori. Ruang ini boleh tumbuh, berubah, dan jadi apa aja.</p></div>
+<div class="about-grid"><article class="glass about-card"><p>Diary Awa itu pojok pribadiku buat ngumpulin potongan hidup dan hal-hal yang menurutku sayang kalau nggak dibagi. Ada cerita dan refleksi, ada juga catatan belajar dan modul yang kubuat sambil nyobain hal baru.</p><p>Anggap aja ini jurnal yang muat lebih dari sekadar kenangan — tempat buat rasa penasaran, eksperimen, ide, dan proses. Beberapa mungkin belum selesai, dan nggak apa-apa.</p><p><em>Beberapa hari aku terang dan cepat, beberapa hari berisik atau sunyi banget — kadang berganti dalam satu jam. Semuanya tetap aku.</em></p></article><aside class="glass quote-card"><blockquote>“A quiet place for everything I'm learning, feeling, and becoming.”</blockquote><small>— a little note from Awa</small></aside></div></section>
+<section class="section wrap" id="explore"><div class="section-head"><div><div class="kicker">Find your corner</div><h2>Explore the space</h2></div><p class="section-intro">Rak-rak beda, satu semesta kecil. Pilih aja yang lagi pengin kamu jelajahin hari ini.</p></div>
+<div class="category-grid">
+<a class="glass category" href="#latest" data-filter-link="journal"><div><div class="symbol">☾</div><h3>My Journal</h3><p>Cerita pribadi, refleksi, dan momen kecil.</p></div><span class="arrow">↗</span></a>
+<a class="glass category" href="#library" data-filter-link="study"><div><div class="symbol">✧</div><h3>Study Corner</h3><p>Catatan, rangkuman, dan hal yang lagi kupelajari.</p></div><span class="arrow">↗</span></a>
+<a class="glass category" href="#library" data-filter-link="module"><div><div class="symbol">▤</div><h3>My Modules</h3><p>Modul belajar dan materi buatanku.</p></div><span class="arrow">↗</span></a>
+<a class="glass category" href="#library" data-filter-link="collection"><div><div class="symbol">⌘</div><h3>Collections</h3><p>Ide, proyek, dan temuan menarik.</p></div><span class="arrow">↗</span></a>
+</div></section>
+<section class="section wrap" id="latest"><div class="section-head"><div><div class="kicker">Fresh from the pages</div><h2>Little things lately</h2></div><p class="section-intro">Beberapa catatan dari jurnal. Halamannya bisa nambah kapan aja ada yang pengin kuceritain.</p></div>
+<div class="content-grid">
+<article class="glass content-card"><div class="card-top"><span class="tag">Journal · 03 Nov 2026</span></div><div class="card-body"><h3>Hujan yang tenang</h3><p>Kadang malam yang tenang aja udah cukup. Nggak buru-buru, nggak ada checklist — cuma hujan dan sedikit ruang buat napas.</p><div class="card-foot"><span>Personal reflection</span><a class="text-link" href="#about">Read note ↗</a></div></div></article>
+<article class="glass content-card"><div class="card-top"><span class="tag">Study note · Coming soon</span></div><div class="card-body"><h3>Learning, one page at a time</h3><p>Tempat buat konsep, temuan kecil, dan catatan yang bikin hal rumit jadi lebih gampang.</p><div class="card-foot"><span>Study Corner</span><a class="text-link" href="#library">Explore ↗</a></div></div></article>
+<article class="glass content-card"><div class="card-top"><span class="tag">Creative log · Coming soon</span></div><div class="card-body"><h3>Things I'm building</h3><p>Eksperimen kecil, proyek pribadi, dan ide yang pelan-pelan mulai berbentuk.</p><div class="card-foot"><span>Collections</span><a class="text-link" href="#library">Explore ↗</a></div></div></article>
+</div></section>
+<section class="section wrap" id="library"><div class="section-head"><div><div class="kicker">The shelves</div><h2>Notes & library</h2></div><p class="section-intro">Kumpulan materi belajar, modul buatan sendiri, dan hal-hal yang sayang kalau nggak disimpan.</p></div>
+<div class="library-tools"><input class="search" id="searchInput" type="search" placeholder="Search titles or descriptions..." aria-label="Cari koleksi"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="study">Study notes</button><button class="filter" data-filter="module">Modules</button><button class="filter" data-filter="collection">Collections</button></div>
+<div class="content-grid" id="libraryGrid">
+<article class="glass content-card library-item" data-category="study"><div class="card-top"><span class="tag">Study note</span></div><div class="card-body"><h3>Data & technology notes</h3><p>Rangkuman konsep seputar data, pemrograman, analisis, dan teknologi.</p><div class="card-foot"><span>Study Corner</span><span class="text-link">Coming soon</span></div></div></article>
+<article class="glass content-card library-item" data-category="module"><div class="card-top"><span class="tag">Self-made module</span></div><div class="card-body"><h3>Learning modules</h3><p>Materi belajar yang disusun sendiri, dari pengantar sampai latihan kecil.</p><div class="card-foot"><span>My Modules</span><span class="text-link">Coming soon</span></div></div></article>
+<article class="glass content-card library-item" data-category="collection"><div class="card-top"><span class="tag">Collection</span></div><div class="card-body"><h3>Ideas & references</h3><p>Kumpulan ide, referensi, bacaan, dan temuan menarik dari berbagai topik.</p><div class="card-foot"><span>Collections</span><span class="text-link">Coming soon</span></div></div></article>
+</div><p class="empty" id="emptyState">Belum ada item yang cocok. Coba kata kunci atau kategori lain.</p>
+</section>
+<section class="section wrap"><div class="about-bottom"><article class="glass note"><h3>A space that keeps growing</h3><p>Diary Awa masih terus dikerjain. Tulisan, catatan, dan modul baru bakal nemu tempatnya di sini pelan-pelan.</p></article><article class="glass note"><h3>Made to be shared</h3><p>Semoga ada yang berguna, relate, atau sekadar bikin harimu terasa lebih ringan.</p></article></div></section>
+</main>
+<footer class="footer"><div class="wrap footer-inner"><div><strong>diary awa.</strong><div>A little space for thoughts, knowledge, and everything in between.</div></div><div>Made slowly, with care. © <span id="year"></span> <a class="backtop" href="#home">Back to the moon ↑</a></div></div><div class="wrap"><svg class="pulse" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1000" d="M0 30H40L55 6L70 54L85 12L100 48L120 30H200L215 4L225 56L245 30H330L345 50L360 10L380 30H460L475 2L490 58L510 22L530 30H600"/></svg><div class="glyphs" aria-hidden="true">∞ ◐ ✦ ∿<small>handle with soft hands</small></div></div></footer>
+<script>
+const R=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Bintang berkelip champagne
+const cv=document.getElementById('stars'),cx=cv.getContext('2d');let stars=[];
+function resizeStars(){const d=devicePixelRatio||1;cv.width=innerWidth*d;cv.height=innerHeight*d;cx.setTransform(d,0,0,d,0,0);stars=Array.from({length:Math.min(90,innerWidth*innerHeight/12000|0)},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight*.75,r:Math.random()*2+.8,p:Math.random()*6.28,s:Math.random()*.8+.3}));drawStars(0)}
+function drawStars(t){cx.clearRect(0,0,innerWidth,innerHeight);cx.shadowBlur=8;cx.shadowColor='#e9cf9a';cx.fillStyle='#e0bd7a';for(const s of stars){cx.globalAlpha=.25+.6*(.5+.5*Math.sin(t*.001*s.s+s.p));const r=s.r;cx.beginPath();cx.moveTo(s.x,s.y-r*2);cx.quadraticCurveTo(s.x,s.y,s.x+r*2,s.y);cx.quadraticCurveTo(s.x,s.y,s.x,s.y+r*2);cx.quadraticCurveTo(s.x,s.y,s.x-r*2,s.y);cx.quadraticCurveTo(s.x,s.y,s.x,s.y-r*2);cx.fill()}cx.globalAlpha=1;if(!R)requestAnimationFrame(drawStars)}
+resizeStars();addEventListener('resize',resizeStars);
+// Navigasi mobile
+const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');menuBtn.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(o))});navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}));
+// Filter & pencarian pustaka
+const fb=[...document.querySelectorAll('.filter')],items=[...document.querySelectorAll('.library-item')],si=document.getElementById('searchInput');let af='all';
+function filterLib(){const q=si.value.toLowerCase().trim();let n=0;items.forEach(i=>{const v=(af==='all'||i.dataset.category===af)&&i.innerText.toLowerCase().includes(q);i.style.display=v?'flex':'none';if(v)n++});document.getElementById('emptyState').style.display=n?'none':'block'}
+fb.forEach(b=>b.addEventListener('click',()=>{af=b.dataset.filter;fb.forEach(x=>x.classList.toggle('active',x===b));filterLib()}));si.addEventListener('input',filterLib);
+document.querySelectorAll('[data-filter-link]').forEach(l=>l.addEventListener('click',()=>{af=l.dataset.filter;fb.forEach(b=>b.classList.toggle('active',b.dataset.filter===af));filterLib()}));
+document.getElementById('year').textContent=new Date().getFullYear();
+
+// Suasana: kupu-kupu bersayap transparan, debu peri, hujan biru, bara api
+(()=>{const body=document.body,toggle=document.getElementById('moodToggle'),panel=document.getElementById('moodPanel'),cur=document.getElementById('moodCurrent'),choices=[...document.querySelectorAll('.mood-choice')],labels={shift:'Shifting ∿',happy:'Happy ☀️',sad:'Rainy 🌧️',angry:'Fiery 🔥',calm:'Calm 🌙',dreamy:'Dreamy 🦋'},fx=document.getElementById('moodFx'),c=fx.getContext('2d');
+let P=[],ripples=[],w=0,h=0,raf=0;
+const hues={dreamy:[275,325,200,150,45],happy:[45,330,150,20],calm:[260,215,170],sad:[210,225],angry:[]},cnt={dreamy:[8,55],happy:[4,45],calm:[3,40],sad:[0,0],angry:[0,0]};
+function resize(){const d=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;fx.width=w*d;fx.height=h*d;c.setTransform(d,0,0,d,0,0);make()}
+function make(){const m=body.dataset.mood;P=[];ripples=[];const [nb,nd]=cnt[m];const H=hues[m];
+for(let i=0;i<nb;i++)P.push({k:'b',x:Math.random()*w,y:Math.random()*h*.8,s:(Math.random()*14+16)*(w<600?.75:1),h:H[i%H.length],f:Math.random()*.5+.8,ph:Math.random()*6.28,vx:Math.random()>.5?1:-1});
+for(let i=0;i<nd;i++)P.push({k:'d',x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+.8,ph:Math.random()*6.28,v:Math.random()*.25+.08});
+if(m==='sad')for(let i=0;i<110;i++)P.push({k:'r',x:Math.random()*w,y:Math.random()*h,l:Math.random()*14+10,v:Math.random()*7+9});
+if(m==='angry')for(let i=0;i<60;i++)P.push({k:'e',x:Math.random()*w,y:Math.random()*h,r:Math.random()*3+1.2,v:Math.random()*1.3+.5,ph:Math.random()*6.28})}
+function butterfly(p,t){const flap=.3+.7*Math.abs(Math.cos(t*.0075*p.f+p.ph)),s=p.s,col=`hsla(${p.h},85%,80%,`;c.save();c.translate(p.x,p.y);c.rotate(Math.sin(t*.0012+p.ph)*.3);c.shadowBlur=18;c.shadowColor=`hsl(${p.h},90%,75%)`;
+for(const m of[1,-1]){c.save();c.scale(m*flap,1);
+let g=c.createLinearGradient(0,-s,s,s*.5);g.addColorStop(0,col+'.5)');g.addColorStop(.6,`hsla(${p.h+40},90%,88%,.22)`);g.addColorStop(1,'rgba(255,255,255,.08)');c.fillStyle=g;c.strokeStyle='rgba(255,255,255,.75)';c.lineWidth=.9;
+c.beginPath();c.moveTo(0,0);c.bezierCurveTo(s*.2,-s*.9,s*1.25,-s*1.15,s*1.1,-s*.3);c.bezierCurveTo(s,.1*s,s*.4,s*.1,0,0);c.fill();c.stroke();
+c.beginPath();c.moveTo(0,0);c.bezierCurveTo(s*.9,s*.05,s*1.05,s*.85,s*.45,s*.85);c.bezierCurveTo(s*.1,s*.8,0,s*.4,0,0);c.fill();c.stroke();
+c.globalAlpha=.5;c.beginPath();c.moveTo(0,0);c.lineTo(s*.95,-s*.55);c.moveTo(0,0);c.lineTo(s*.7,s*.5);c.stroke();c.restore()}
+c.shadowBlur=6;c.strokeStyle='rgba(120,90,140,.7)';c.lineWidth=1.6;c.beginPath();c.moveTo(0,-s*.25);c.lineTo(0,s*.35);c.moveTo(0,-s*.25);c.quadraticCurveTo(-s*.1,-s*.5,-s*.25,-s*.55);c.moveTo(0,-s*.25);c.quadraticCurveTo(s*.1,-s*.5,s*.25,-s*.55);c.stroke();c.restore()}
+function draw(t=0){c.clearRect(0,0,w,h);const m=body.dataset.mood;
+for(const p of P){
+if(p.k==='b'){butterfly(p,t);p.x+=(Math.sin(t*.0004+p.ph)*.6+.45*p.vx);p.y+=Math.cos(t*.0006+p.ph*1.3)*.5-.12;if(p.x>w+60)p.x=-60;if(p.x<-60)p.x=w+60;if(p.y<-60)p.y=h*.8;if(p.y>h)p.y=0}
+else if(p.k==='d'){const a=.3+.6*(.5+.5*Math.sin(t*.003+p.ph));c.shadowBlur=10;c.shadowColor='#f0d58f';c.fillStyle=`rgba(255,236,180,${a})`;c.beginPath();c.arc(p.x,p.y,p.r,0,6.283);c.fill();c.shadowBlur=0;p.y+=p.v;p.x+=Math.sin(t*.001+p.ph)*.35;if(p.y>h+10){p.y=-10;p.x=Math.random()*w}}
+else if(p.k==='r'){c.strokeStyle='rgba(120,165,225,.55)';c.lineWidth=1.3;c.beginPath();c.moveTo(p.x,p.y);c.lineTo(p.x-p.l*.18,p.y+p.l);c.stroke();p.y+=p.v;p.x-=p.v*.18;if(p.y>h){if(Math.random()<.18&&ripples.length<30&&p.y>h*.8)ripples.push({x:p.x,y:h-Math.random()*h*.2,r:2,a:.5});p.y=-20;p.x=Math.random()*w*1.2}}
+else if(p.k==='e'){const f=.5+.5*Math.sin(t*.006+p.ph),g=c.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);g.addColorStop(0,`rgba(255,${190+f*50|0},110,.95)`);g.addColorStop(.4,'rgba(255,140,80,.45)');g.addColorStop(1,'rgba(255,120,80,0)');c.fillStyle=g;c.beginPath();c.arc(p.x,p.y,p.r*4,0,6.283);c.fill();p.y-=p.v;p.x+=Math.sin(t*.002+p.ph)*.7;if(p.y<-20){p.y=h+10;p.x=Math.random()*w}}}
+if(m==='sad'){ripples=ripples.filter(r=>r.a>.02);for(const r of ripples){c.strokeStyle=`rgba(130,170,225,${r.a})`;c.lineWidth=1;c.beginPath();c.ellipse(r.x,r.y,r.r,r.r*.35,0,0,6.283);c.stroke();r.r+=.7;r.a*=.94}}
+if(m==='angry'){const g=c.createLinearGradient(0,h*.55,0,h);g.addColorStop(0,'rgba(255,170,90,0)');g.addColorStop(1,'rgba(255,140,80,.22)');c.fillStyle=g;c.fillRect(0,h*.55,w,h*.45)}
+if(!R)raf=requestAnimationFrame(draw)}
+let timer=0;const pool=['dreamy','happy','sad','angry','calm'];
+function apply(m){body.dataset.mood=m;make();cancelAnimationFrame(raf);draw(0)}
+function shiftLoop(){const o=pool.filter(x=>x!==body.dataset.mood);apply(o[Math.random()*o.length|0]);timer=setTimeout(shiftLoop,4500+Math.random()*7500)}
+function setMood(m,save=true){if(!labels[m])return;clearTimeout(timer);cur.textContent=labels[m];choices.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mood===m)));if(save){try{localStorage.setItem('diaryAwaMood',m)}catch(e){}}if(m==='shift'){R?apply('dreamy'):shiftLoop()}else apply(m)}
+toggle.addEventListener('click',()=>{const o=panel.classList.toggle('open');toggle.setAttribute('aria-expanded',String(o))});choices.forEach(b=>b.addEventListener('click',()=>setMood(b.dataset.mood)));
+let ini=R?'dreamy':'shift';try{const s=localStorage.getItem('diaryAwaMood');if(labels[s])ini=s}catch(e){}resize();setMood(ini,false);addEventListener('resize',resize)})();
+
+// Cuaca batin: berganti tanpa pola
+(()=>{if(R)return;const L=[['☀️','bright & buzzing'],['⛈️','loud inside'],['🌫️','static'],['🌙','soft & quiet'],['🌪️','too fast'],['🌧️','heavy'],['✨','golden hour'],['🌊','tidal']],i=document.getElementById('wxIcon'),t=document.getElementById('wxTxt');const go=()=>{const x=L[Math.random()*L.length|0];i.textContent=x[0];t.textContent=x[1];setTimeout(go,1100+Math.random()*2200)};setTimeout(go,1500)})();
+// Pemutar lagu. Isi SONG di bawah: src = file mp3 di folder yang sama, atau youtube = ID video.
+(()=>{const SONG={title:'Moonlit lullaby',artist:'placeholder — ganti SONG di script',src:'',youtube:''};
+const $=id=>document.getElementById(id),btn=$('playBtn'),seek=$('plSeek'),vol=$('plVol'),box=$('ytBox');let au,ctx,gen,on=false;
+$('plTitle').textContent=SONG.title;$('plArtist').textContent=SONG.artist;
+if(SONG.src){au=new Audio(SONG.src);au.loop=true;au.volume=+vol.value;au.addEventListener('timeupdate',()=>{if(au.duration)seek.value=au.currentTime/au.duration*100});seek.oninput=()=>{if(au.duration)au.currentTime=seek.value/100*au.duration}}else seek.style.display='none';
+function ambient(){ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();const g=ctx.createGain(),d=ctx.createDelay(),fb=ctx.createGain(),N=[261.6,293.7,329.6,392,440,523.3,587.3];g.gain.value=+vol.value*.5;d.delayTime.value=.45;fb.gain.value=.45;g.connect(ctx.destination);g.connect(d);d.connect(fb);fb.connect(d);d.connect(ctx.destination);gen={g,id:0};
+const note=()=>{const o=ctx.createOscillator(),e=ctx.createGain(),n=ctx.currentTime;o.type='sine';o.frequency.value=N[Math.random()*N.length|0]*(Math.random()<.3?.5:1);e.gain.setValueAtTime(0,n);e.gain.linearRampToValueAtTime(.35,n+.05);e.gain.exponentialRampToValueAtTime(.001,n+2.4);o.connect(e);e.connect(g);o.start();o.stop(n+2.5);gen.id=setTimeout(note,900+Math.random()*1400)};note()}
+btn.onclick=()=>{on=!on;btn.textContent=on?'❚❚':'▶';btn.setAttribute('aria-label',on?'Jeda lagu':'Putar lagu');
+if(SONG.src){on?au.play():au.pause()}
+else if(SONG.youtube){box.innerHTML=on?'<iframe src="https://www.youtube-nocookie.com/embed/'+SONG.youtube+'?autoplay=1&rel=0" title="Lagu" allow="autoplay; encrypted-media" allowfullscreen></iframe>':'';box.classList.toggle('on',on)}
+else if(on)ambient();else{clearTimeout(gen.id);gen.g.disconnect()}};
+vol.oninput=()=>{if(au)au.volume=vol.value;if(gen)gen.g.gain.value=vol.value*.5}})();
+</script>
+</body>
+</html>
